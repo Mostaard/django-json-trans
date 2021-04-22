@@ -1,0 +1,40 @@
+Metadata-Version: 1.1
+Name: django-json-trans
+Version: 0.1
+Summary: A Django app that provides model field translations with JSON Fields.
+Home-page: https://github.com/Mostaard/django-json-trans
+Author: Jonas Vandermosten
+Author-email: Jonfffffas@mostaard.be
+License: BSD-3-Clause
+Description: ========================
+        Django JSON Translations
+        ========================
+        
+        Django JSON Translations is an app that provides a field for storing
+        translations in PostgreSQL JSON fields.
+        
+        Config
+        -----------
+        
+        Add the supported languages in settings as following
+        LANGUAGES = [
+        ('en', _('English')),
+        ('nl', _('Dutch')),
+        ('fr', _('French')),
+        ]
+        
+Platform: UNKNOWN
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 3.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
