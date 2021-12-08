@@ -1,14 +1,13 @@
 from enum import Enum
 
-
 class LanguageCode(Enum):
-    ARABIC = 'ara'
-    BULGARIAN = 'bul'
-    CHINESE = 'chi'
-    DANISH = 'dan'
-    DUTCH = 'nl'
+    ARABIC = "ar"
+    BULGARIAN = "bg"
+    CHINESE = "zh"
+    DANISH = "da"
+    DUTCH = "nl"
     ENGLISH = 'en'
-    FINNISH = 'fin'
+    FINNISH = "fi"
     FRENCH = 'fr'
     GERMAN = 'deu'
     GREEK = 'ell'
