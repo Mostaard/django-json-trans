@@ -18,4 +18,4 @@ LANGUAGES = [
 
 Build
 _____
-python setup.py sdist
+py -m build
