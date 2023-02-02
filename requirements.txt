@@ -1,4 +1,4 @@
 setuptools==57.0.0
-Django==3.2.12
+Django==3.2.16
 jsonschema==4.4.0
 pycountry==22.3.5
