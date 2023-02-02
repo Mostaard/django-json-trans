@@ -9,8 +9,6 @@ from django.db.models import JSONField
 from jsonschema import validate
 from jsonschema.exceptions import ValidationError as JSONSchemaError
 
-from .language_codes import LanguageCode
-
 logger = logging.getLogger(__name__)
 
 LANGUAGE_CODES = [language.alpha_2 for language in pycountry.languages if
@@ -77,11 +75,11 @@ class MultiLanguageField(JSONField):
         return True
 
 
-def get_translated_value(field, language_code=str(LanguageCode.DUTCH)):
+def get_translated_value(field, language_code=''):
     if not field or field == '':
         return field
-    if language_code not in field['translations'].keys():
-        language_code = str(LanguageCode.DUTCH)
+    if not language_code or language_code not in field['translations'].keys():
+        language_code = field['default']
     try:
         return field['translations'][language_code]
     except (KeyError, TypeError):

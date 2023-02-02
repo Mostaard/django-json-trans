@@ -20,7 +20,10 @@ class TranslationTest(TestCase):
         field = MultiLanguageField()
         with self.assertRaises(ValidationError):
             field.validate_translation('fr', {
-                'fr': 4,
+                'default': 'fr',
+                'translations': {
+                    'fr': 4
+                }
             })
 
     def test_validate_schema(self):
