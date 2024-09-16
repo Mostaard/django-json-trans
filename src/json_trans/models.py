@@ -76,8 +76,10 @@ class MultiLanguageField(JSONField):
 
 
 def get_translated_value(field, language_code=''):
-    if not field or field == '':
+    if not field:
         return field
+    if not isinstance(field, dict):
+        return str(field)
     if not language_code or language_code not in field['translations'].keys():
         language_code = field['default']
     try:

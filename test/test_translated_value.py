@@ -42,3 +42,7 @@ class TranslationTest(TestCase):
             }
         }
         self.assertEqual(get_translated_value(field, 'fr'), 'NO TRANSLATION AVAILABLE')
+
+    def test_get_translated_value_non_dict_field_returns_string(self):
+        field = 1
+        self.assertEqual(get_translated_value(field, 'fr'), '1')
