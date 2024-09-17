@@ -18,4 +18,4 @@ LANGUAGES = [
 
 Build
 _____
-py -m build
+pip wheel .
