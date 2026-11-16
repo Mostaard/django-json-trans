@@ -19,8 +19,8 @@ schema = {
     'properties': {
         'default': {'type': 'string'},
         'translations': {'type': 'object'},
-    }
-
+    },
+    'required': ['default', 'translations'],
 }
 
 
@@ -38,7 +38,7 @@ class MultiLanguageField(JSONField):
         for language_code in value['translations'].keys():
             self.validate_language_code(language_code)
             self.validate_translation(language_code, value)
-            super().validate(value, model_instance)
+        super().validate(value, model_instance)
 
     @staticmethod
     def validate_schema(value):
@@ -77,16 +77,20 @@ class MultiLanguageField(JSONField):
 
 def get_translated_value(field, language_code=''):
     if not field:
-        return field
+        return ''
     if not isinstance(field, dict):
         return str(field)
-    if not language_code or language_code not in field['translations'].keys():
-        language_code = field['default']
+    # A value saved without full_clean may lack the keys that validate requires.
+    translations = field.get('translations')
+    if not isinstance(translations, dict):
+        translations = {}
+    if not language_code or language_code not in translations:
+        language_code = field.get('default')
     try:
-        return field['translations'][language_code]
+        return translations[language_code]
     except (KeyError, TypeError):
         logger.error(
             '{} - missing translation for language code {} in jsonfield {}'.format(
                 str(ErrorCode.TRANSLATION),
                 str(language_code), field))
-        return 'NO TRANSLATION AVAILABLE'
+        return ''
